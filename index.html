@@ -2,156 +2,1149 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <title>My_Portfolio</title>
+    <title>Raid Legdanil - Business Intelligence Engineer & Data Analyst</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .portfolio-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a" cx="50%" cy="0%" r="100%"><stop offset="0%" stop-color="%23ffffff" stop-opacity="0.1"/><stop offset="100%" stop-color="%23ffffff" stop-opacity="0"/></radialGradient></defs><rect width="100" height="20" fill="url(%23a)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .profile-info {
+            position: relative;
+            z-index: 1;
+        }
+
+        .name {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #fff, #e8f4f8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .main-content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            animation: slideInLeft 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .section:nth-child(even) {
+            animation-name: slideInRight;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .summary {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            margin-bottom: 30px;
+        }
+
+        .experience-item, .education-item {
+            background: #fff;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .experience-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .experience-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .job-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .company {
+            font-size: 1.1rem;
+            color: #667eea;
+            font-weight: 500;
+        }
+
+        .duration {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .job-description {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-category {
+            background: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.05);
+            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .cert-item {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #28a745;
+            transition: transform 0.3s ease;
+        }
+
+        .cert-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .cert-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .cert-issuer {
+            color: #28a745;
+            font-size: 0.9rem;
+        }
+
+        .languages {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .language-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .language-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .language-name {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .language-level {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 3px;
+        }
+
+        .soft-skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .soft-skill {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-top: 3px solid #667eea;
+        }
+
+        .soft-skill:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .project-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            border: 1px solid #e8e9ea;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .project-header h3 {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin: 0;
+            flex: 1;
+        }
+
+        .project-type {
+            background: linear-gradient(45deg, #28a745, #20c997);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-left: 10px;
+        }
+
+        .project-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .project-chart {
+            margin: 20px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tech-tag {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .achievements-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin-top: 30px;
+        }
+
+        .achievements-section h3 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+        }
+
+        .achievement-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .achievement-item:hover {
+            transform: scale(1.05);
+        }
+
+        .achievement-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #fff, #f8f9fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .achievement-text {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .name {
+                font-size: 2.2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .job-header {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .main-content {
+                padding: 20px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <a href="#" class="logo">Raid </a>
-        <nav class="nav">
-            <a href="#services">Services</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+    <div class="container">
+        <div class="portfolio-card">
+            <div class="header">
+                <div class="profile-info">
+                    <h1 class="name">Raid Legdanil</h1>
+                    <p class="title">Business Intelligence Engineer & Data Analyst</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span>📧</span>
+                            <span>Raid.legdanil@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <span>📱</span>
+                            <span>+212-688505920</span>
+                        </div>
+                        <div class="contact-item">
+                            <span>📍</span>
+                            <span>Sale, Morocco</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <section class="main">
-        <div>
-            <h2>
-                Hello, I'm Raid <br>
-                <span>web developer</span>
-            </h2>
-            <h3>
-                " Let's work together "
-            </h3>
-            <a href="CV_LEGDANI_R.pdf" class="main-btn" download target="_blank">Download CV</a>
-            <div class="social-btn">
-                <a href="https://www.linkedin.com/in/raid-legdani-249024239" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://www.facebook.com/raid.lagdani?locale=fr_FR" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-                <a href="https://www.instagram.com/raid.morningstar/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-        </div>
-    </section>
-    <section class="cards" id="services">
-        <h2 class="title">services</h2>
-        <div class="content">
-            <div class="card">
-                <div class="icon">
-                    <i class="fa-solid fa-circle-nodes"></i>
+            <div class="main-content">
+                <div class="section">
+                    <h2>Professional Summary</h2>
+                    <div class="summary">
+                        Business Intelligence Engineer and Data Scientist with over 3 years of experience in data management, analysis, and automation. Passionate about transforming raw data into strategic decision-making tools. Autonomous, rigorous, and results-oriented, I am fully committed to designing reliable, scalable solutions adapted to business needs through continuous learning and curiosity.
+                    </div>
                 </div>
-                <div class="info">
-                    <h3>Software modeling </h3>
-                    <p>accomplished software modeler, specializing in creating efficient and precise software models. With a strong technical skill set, a profound understanding of software engineering principles, and effective communication abilities, I am a valuable asset in driving successful software development projects</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="icon">
-                    <i class="fa-solid fa-code"></i>
-                </div>
-                <div class="info">
-                    <h3>Website Builder</h3>
-                    <p>
-                        As a full-stack developer, I simplify website creation with user-friendly tools. I empower individuals and businesses to build their own customized websites without coding knowledge. My goal is to swiftly establish their online presence through intuitive interfaces, extensive features, and support for domain registration, hosting, editing, and optimization
-                    </p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="icon">
-                    <i class="fa-solid fa-gear"></i>
-                </div>
-                <div class="info">
-                    <h3>Debugging</h3>
-                    <p>
-                        My role as a debugger is to identify and fix software errors. I carefully analyze code, utilize debugging tools, and meticulously resolve issues to ensure optimal functionality</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="projects" id="projects">
-        <h2 class="title">Projects</h2>
-        <div class="content">
-            <div class="p-card">
-                <div class="pic">
-                    <img src="images/project-All.jpg">
-                </div>
-                <div class="p-info">
-                    <p class="p-text">The "ALL FACTURE" project centralized billing data from multiple projects, generating customized reports for informed financial decisions by the Cheikh Zaid Foundation.</p>
-                    <strong class="p-title">
-                        <span>ALL FACTURE</span>
-                        <a href="#" class="more-details">More details</a>
-                    </strong>
-                </div>
-            </div>
-            <div class="p-card">
-                <div class="pic">
-                    <img src="images/eco.jpg">
-                </div>
-                <div class="p-info">
-                    <p class="p-text">The E-Website is a digital platform for businesses to sell products online, offering convenience, global reach, and secure transactions.</p>
-                    <strong class="p-title">
-                        <span>E-Website</span>
-                        <a href="#" class="more-details">More details</a>
-                    </strong>
-                </div>
-            </div>
-            <div class="p-card">
-                <div class="pic">
-                    <img src="images/Tocc.jpg">
-                </div>
-                <div class="p-info">
-                    <p class="p-text">I created a Python Tic-Tac-Toe game with a 3x3 grid. It uses data structures, loops, conditionals, and user input for an interactive experience. Python's simplicity and versatility made it perfect for developing this engaging game.</p>
-                    <strong class="p-title">
-                        <span>Tic Tac Toe</span>
-                        <a href="#" class="more-details">More details</a>
-                    </strong>
-                </div>
-            </div> 
-        </div>
-    </section>
-    <section class="cards contact" id="contact">
-        <h2 class="title">Contact me</h2>
-        <div class="content">
-            <div class="card">
-                <div class="icon">
-                    <i class="fa-solid fa-phone"></i>
-                </div>
-                <div class="info">
-                    <h3>Phone</h3>
-                    <p>+2126-88-50-59-20</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="icon">
-                    <i class="fa-solid fa-envelope"></i>
-                </div>
-                <div class="info">
-                    <h3>Email</h3>
-                    <p>Raid.Legdani@gmail.com</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="icon">
-                    <i class="fa-brands fa-linkedin"></i>
-                </div>
-                <div class="info">
-                    <h3>LinkedIn</h3>
-                    <p>Raid Legdani</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <footer class="footer">
-        <p class="footer-title">Copyrights @<span>Raid Legdani</span></p>
-        <div class="social-btn">
-            <a href="https://www.linkedin.com/in/raid-legdani-249024239" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="https://www.facebook.com/raid.lagdani?locale=fr_FR" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-            <a href="https://www.instagram.com/raid.morningstar/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-        </div>
+                <div class="section">
+                    <h2>Professional Experience</h2>
+                    
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Data Engineer</div>
+                                <div class="company">Fondation Mohammed VI – Rabat, Morocco</div>
+                            </div>
+                            <div class="duration">June 2025 – Present</div>
+                        </div>
+                        <div class="job-description">
+                            Development of reliable data pipelines for analysis and BI using SQL, Python, SSIS, Talend, and cloud tools. Integration of new sources and automation of ETL flows in collaboration with business teams.
+                        </div>
+                    </div>
 
-    </footer>
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Database Administrator</div>
+                                <div class="company">Kahima Development – Casablanca, Morocco</div>
+                            </div>
+                            <div class="duration">March 2024 – May 2025 (1 year 3 months)</div>
+                        </div>
+                        <div class="job-description">
+                            Database administration and updates, multi-source centralization, data migration from Excel to SQL databases, process automation with VBA, and creation of interactive dashboards for data analysis.
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Data Analyst</div>
+                                <div class="company">Fondation Cheikh Zaid – Rabat, Morocco</div>
+                            </div>
+                            <div class="duration">Nov 2022 – Feb 2024 (1 year 3 months)</div>
+                        </div>
+                        <div class="job-description">
+                            Development of a Python back-end to automate billing data collection (SQL Server, MySQL, Access), data analysis, and automated report generation.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Technical Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h3>🔍 Analysis & Statistics</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Descriptive Statistics</span>
+                                <span class="skill-tag">Inferential Statistics</span>
+                                <span class="skill-tag">Probability</span>
+                                <span class="skill-tag">Correlation</span>
+                                <span class="skill-tag">Regression</span>
+                                <span class="skill-tag">Time Series</span>
+                                <span class="skill-tag">EDA</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-category">
+                            <h3>📊 Business Intelligence & DataViz</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Power BI</span>
+                                <span class="skill-tag">Looker Studio</span>
+                                <span class="skill-tag">Tableau</span>
+                                <span class="skill-tag">Excel Advanced</span>
+                                <span class="skill-tag">VBA</span>
+                                <span class="skill-tag">KPI Creation</span>
+                                <span class="skill-tag">Interactive Dashboards</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-category">
+                            <h3>🤖 Machine Learning & AI</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Pandas</span>
+                                <span class="skill-tag">NumPy</span>
+                                <span class="skill-tag">Scikit-learn</span>
+                                <span class="skill-tag">Matplotlib</span>
+                                <span class="skill-tag">Seaborn</span>
+                                <span class="skill-tag">NLP (NLTK)</span>
+                                <span class="skill-tag">Computer Vision</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-category">
+                            <h3>🗄️ Databases</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">SQL Server</span>
+                                <span class="skill-tag">PostgreSQL</span>
+                                <span class="skill-tag">MySQL</span>
+                                <span class="skill-tag">Oracle</span>
+                                <span class="skill-tag">PL/SQL</span>
+                                <span class="skill-tag">Complex Queries</span>
+                                <span class="skill-tag">Stored Procedures</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-category">
+                            <h3>🏗️ Big Data & ETL</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Apache Spark</span>
+                                <span class="skill-tag">Hadoop</span>
+                                <span class="skill-tag">Kafka</span>
+                                <span class="skill-tag">Apache Iceberg</span>
+                                <span class="skill-tag">ETL Automation</span>
+                                <span class="skill-tag">SSIS</span>
+                                <span class="skill-tag">Talend</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-category">
+                            <h3>💻 Development & Tools</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">C#</span>
+                                <span class="skill-tag">PHP</span>
+                                <span class="skill-tag">ASP.NET Core</span>
+                                <span class="skill-tag">Laravel</span>
+                                <span class="skill-tag">Streamlit</span>
+                                <span class="skill-tag">Docker</span>
+                                <span class="skill-tag">Git/GitHub</span>
+                                <span class="skill-tag">REST API</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Featured Projects & Achievements</h2>
+                    
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3>🔄 Advanced ETL Pipeline Solutions</h3>
+                                <span class="project-type">Freelance Projects</span>
+                            </div>
+                            <div class="project-description">
+                                Designed and implemented robust ETL pipelines for multiple clients, handling data volumes of 10M+ records daily. Automated data extraction from various sources (APIs, databases, files) with 99.9% reliability.
+                            </div>
+                            <div class="project-chart">
+                                <canvas id="etlChart" width="300" height="200"></canvas>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">SSIS</span>
+                                <span class="tech-tag">Talend</span>
+                                <span class="tech-tag">Apache Airflow</span>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3>📊 Interactive Business Dashboards</h3>
+                                <span class="project-type">Client Solutions</span>
+                            </div>
+                            <div class="project-description">
+                                Created 50+ interactive dashboards using Power BI and Tableau for various industries. Reduced report generation time by 85% and improved decision-making speed for C-level executives.
+                            </div>
+                            <div class="project-chart">
+                                <canvas id="dashboardChart" width="300" height="200"></canvas>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">Power BI</span>
+                                <span class="tech-tag">Tableau</span>
+                                <span class="tech-tag">Looker Studio</span>
+                                <span class="tech-tag">D3.js</span>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3>📈 Automated Reporting Systems</h3>
+                                <span class="project-type">Enterprise Solutions</span>
+                            </div>
+                            <div class="project-description">
+                                Developed automated reporting systems serving 500+ stakeholders across organizations. Implemented real-time KPI monitoring with alert systems and scheduled report distribution.
+                            </div>
+                            <div class="project-chart">
+                                <canvas id="reportingChart" width="300" height="200"></canvas>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">SQL Server</span>
+                                <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Power BI</span>
+                                <span class="tech-tag">SMTP</span>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3>🤖 ML-Powered Analytics Platform</h3>
+                                <span class="project-type">Innovation Project</span>
+                            </div>
+                            <div class="project-description">
+                                Built predictive analytics platform combining traditional BI with machine learning. Achieved 94% accuracy in sales forecasting and customer behavior prediction for e-commerce clients.
+                            </div>
+                            <div class="project-chart">
+                                <canvas id="mlChart" width="300" height="200"></canvas>
+                            </div>
+                            <div class="project-tech">
+                                <span class="tech-tag">Scikit-learn</span>
+                                <span class="tech-tag">TensorFlow</span>
+                                <span class="tech-tag">Streamlit</span>
+                                <span class="tech-tag">Docker</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="achievements-section">
+                        <h3>🏆 Key Achievements</h3>
+                        <div class="achievements-grid">
+                            <div class="achievement-item">
+                                <div class="achievement-number">50+</div>
+                                <div class="achievement-text">Dashboards Created</div>
+                            </div>
+                            <div class="achievement-item">
+                                <div class="achievement-number">10M+</div>
+                                <div class="achievement-text">Records Processed Daily</div>
+                            </div>
+                            <div class="achievement-item">
+                                <div class="achievement-number">85%</div>
+                                <div class="achievement-text">Time Reduction</div>
+                            </div>
+                            <div class="achievement-item">
+                                <div class="achievement-number">99.9%</div>
+                                <div class="achievement-text">System Reliability</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Education</h2>
+                    
+                    <div class="education-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Engineering Cycle (Business Intelligence & Data Science)</div>
+                                <div class="company">Institut supérieur de management, d'administration et de génie informatique</div>
+                            </div>
+                            <div class="duration">2023-2025</div>
+                        </div>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Bachelor's Degree in Computer Development</div>
+                                <div class="company">Institut supérieur de management, d'administration et de génie informatique</div>
+                            </div>
+                            <div class="duration">2022-2023</div>
+                        </div>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Specialized Technician Diploma in Computer Development</div>
+                                <div class="company">Instituts Spécialisés de Technologie Appliquée de Casablanca</div>
+                            </div>
+                            <div class="duration">2020-2022</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Certifications</h2>
+                    <div class="certifications-grid">
+                        <div class="cert-item">
+                            <div class="cert-title">Data Science Foundations (BD0101EN)</div>
+                            <div class="cert-issuer">IBM Cognitive Class</div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-title">Data Analysis Certificate</div>
+                            <div class="cert-issuer">ALX Africa</div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-title">Microsoft Office Excel® 2016</div>
+                            <div class="cert-issuer">Microsoft</div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-title">Microsoft Office Certifications</div>
+                            <div class="cert-issuer">Microsoft</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Languages</h2>
+                    <div class="languages">
+                        <div class="language-item">
+                            <div class="language-name">Arabic</div>
+                            <div class="language-level">Advanced</div>
+                        </div>
+                        <div class="language-item">
+                            <div class="language-name">French</div>
+                            <div class="language-level">Fluent</div>
+                        </div>
+                        <div class="language-item">
+                            <div class="language-name">English</div>
+                            <div class="language-level">Fluent</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Soft Skills</h2>
+                    <div class="soft-skills">
+                        <div class="soft-skill">
+                            <strong>Rapid Learning Ability</strong>
+                        </div>
+                        <div class="soft-skill">
+                            <strong>Curiosity & Continuous Improvement</strong>
+                        </div>
+                        <div class="soft-skill">
+                            <strong>Adaptability to New Technologies</strong>
+                        </div>
+                        <div class="soft-skill">
+                            <strong>Time Management</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth scrolling animation on load
+        window.addEventListener('load', function() {
+            const sections = document.querySelectorAll('.section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            sections.forEach((section, index) => {
+                section.style.animationDelay = `${index * 0.1}s`;
+                section.style.animationPlayState = 'paused';
+                observer.observe(section);
+            });
+
+            // Initialize charts
+            initializeCharts();
+        });
+
+        // Add hover effects for skill tags
+        document.querySelectorAll('.skill-tag').forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05) rotate(2deg)';
+            });
+            
+            tag.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+
+        // Initialize charts
+        function initializeCharts() {
+            // ETL Pipeline Performance Chart
+            const etlCtx = document.getElementById('etlChart');
+            if (etlCtx) {
+                drawETLChart(etlCtx);
+            }
+
+            // Dashboard Usage Chart
+            const dashboardCtx = document.getElementById('dashboardChart');
+            if (dashboardCtx) {
+                drawDashboardChart(dashboardCtx);
+            }
+
+            // Reporting Efficiency Chart
+            const reportingCtx = document.getElementById('reportingChart');
+            if (reportingCtx) {
+                drawReportingChart(reportingCtx);
+            }
+
+            // ML Accuracy Chart
+            const mlCtx = document.getElementById('mlChart');
+            if (mlCtx) {
+                drawMLChart(mlCtx);
+            }
+        }
+
+        function drawETLChart(canvas) {
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+
+            // Clear canvas
+            ctx.clearRect(0, 0, width, height);
+
+            // Create gradient
+            const gradient = ctx.createLinearGradient(0, 0, 0, height);
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
+
+            // Draw bars representing ETL performance
+            const data = [85, 92, 78, 96, 88];
+            const labels = ['Extract', 'Transform', 'Load', 'Validate', 'Monitor'];
+            const barWidth = width / data.length - 20;
+
+            data.forEach((value, index) => {
+                const barHeight = (value / 100) * (height - 40);
+                const x = index * (barWidth + 20) + 10;
+                const y = height - barHeight - 20;
+
+                // Draw bar
+                ctx.fillStyle = gradient;
+                ctx.fillRect(x, y, barWidth, barHeight);
+
+                // Draw value text
+                ctx.fillStyle = '#2c3e50';
+                ctx.font = '12px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText(value + '%', x + barWidth/2, y - 5);
+                ctx.fillText(labels[index], x + barWidth/2, height - 5);
+            });
+        }
+
+        function drawDashboardChart(canvas) {
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+            const centerX = width / 2;
+            const centerY = height / 2;
+            const radius = Math.min(width, height) / 3;
+
+            // Clear canvas
+            ctx.clearRect(0, 0, width, height);
+
+            // Draw pie chart representing dashboard types
+            const data = [
+                { label: 'Sales', value: 30, color: '#667eea' },
+                { label: 'Marketing', value: 25, color: '#764ba2' },
+                { label: 'Finance', value: 20, color: '#f093fb' },
+                { label: 'Operations', value: 15, color: '#28a745' },
+                { label: 'HR', value: 10, color: '#ffc107' }
+            ];
+
+            let currentAngle = 0;
+            data.forEach(segment => {
+                const sliceAngle = (segment.value / 100) * 2 * Math.PI;
+                
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.arc(centerX, centerY, radius, currentAngle, currentAngle + sliceAngle);
+                ctx.closePath();
+                ctx.fillStyle = segment.color;
+                ctx.fill();
+
+                // Add labels
+                const labelAngle = currentAngle + sliceAngle / 2;
+                const labelX = centerX + Math.cos(labelAngle) * (radius + 20);
+                const labelY = centerY + Math.sin(labelAngle) * (radius + 20);
+                
+                ctx.fillStyle = '#2c3e50';
+                ctx.font = '10px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText(segment.label, labelX, labelY);
+                ctx.fillText(segment.value + '%', labelX, labelY + 12);
+
+                currentAngle += sliceAngle;
+            });
+        }
+
+        function drawReportingChart(canvas) {
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+
+            // Clear canvas
+            ctx.clearRect(0, 0, width, height);
+
+            // Draw line chart showing reporting efficiency over time
+            const data = [45, 52, 68, 75, 82, 88, 94];
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'];
+            const stepX = width / (data.length - 1);
+            const maxY = Math.max(...data);
+
+            // Draw grid lines
+            ctx.strokeStyle = '#e0e0e0';
+            ctx.lineWidth = 1;
+            for (let i = 0; i <= 4; i++) {
+                const y = (height - 40) * i / 4 + 20;
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(width, y);
+                ctx.stroke();
+            }
+
+            // Draw line
+            ctx.strokeStyle = '#667eea';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            data.forEach((value, index) => {
+                const x = index * stepX;
+                const y = height - 20 - ((value / maxY) * (height - 40));
+                
+                if (index === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+
+                // Draw points
+                ctx.save();
+                ctx.fillStyle = '#764ba2';
+                ctx.beginPath();
+                ctx.arc(x, y, 4, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.restore();
+            });
+            ctx.stroke();
+
+            // Add labels
+            ctx.fillStyle = '#2c3e50';
+            ctx.font = '10px Arial';
+            ctx.textAlign = 'center';
+            months.forEach((month, index) => {
+                const x = index * stepX;
+                ctx.fillText(month, x, height - 5);
+            });
+        }
+
+        function drawMLChart(canvas) {
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+
+            // Clear canvas
+            ctx.clearRect(0, 0, width, height);
+
+            // Draw accuracy gauge
+            const centerX = width / 2;
+            const centerY = height / 2 + 20;
+            const radius = Math.min(width, height) / 3;
+            const accuracy = 94; // 94% accuracy
+
+            // Draw background arc
+            ctx.strokeStyle = '#e0e0e0';
+            ctx.lineWidth = 10;
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, Math.PI, 2 * Math.PI);
+            ctx.stroke();
+
+            // Draw accuracy arc
+            const gradient = ctx.createLinearGradient(0, 0, width, 0);
+            gradient.addColorStop(0, '#28a745');
+            gradient.addColorStop(1, '#20c997');
+            
+            ctx.strokeStyle = gradient;
+            ctx.lineWidth = 10;
+            ctx.beginPath();
+            const endAngle = Math.PI + (accuracy / 100) * Math.PI;
+            ctx.arc(centerX, centerY, radius, Math.PI, endAngle);
+            ctx.stroke();
+
+            // Add accuracy text
+            ctx.fillStyle = '#2c3e50';
+            ctx.font = 'bold 24px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(accuracy + '%', centerX, centerY + 8);
+            
+            ctx.font = '12px Arial';
+            ctx.fillText('ML Accuracy', centerX, centerY + 25);
+        }
+    </script>
 </body>
 </html>
